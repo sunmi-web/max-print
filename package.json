@@ -1,5 +1,5 @@
 {
-  "name": "@sunmi-web/max-print",
+  "name": "@sunmi/max-print",
   "version": "1.0.0",
   "type": "module",
   "description": "Max print utility package",

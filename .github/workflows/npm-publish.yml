@@ -1,10 +1,15 @@
-# This workflow runs tests and publishes to npm when manually triggered
-# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+# This workflow runs tests and publishes to npm when manually triggered.
+# Publish uses npm Trusted Publishing (OIDC) when configured on npmjs.com — no token needed.
+# See: https://docs.npmjs.com/trusted-publishers
 
 name: Node.js Package
 
 on:
   workflow_dispatch:
+
+permissions:
+  id-token: write   # Required for npm OIDC (Trusted Publishing)
+  contents: read
 
 jobs:
   build:
@@ -24,10 +29,12 @@ jobs:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
       with:
-        node-version: 20
+        node-version: "22"
         registry-url: https://registry.npmjs.org/
     - run: npm install
     - run: npm run build
+    # Trusted Publishing (OIDC): no NODE_AUTH_TOKEN needed if publisher is set on npm.
+    # Otherwise set secret npm_token to a Granular token with "Bypass 2FA" enabled.
     - run: npm publish
       env:
-        NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+        NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
