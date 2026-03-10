@@ -1,0 +1,25 @@
+{
+  "name": "@sunmi/max-print",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Max print utility package",
+  "main": "index.mjs",
+  "exports": {
+    ".": {
+      "import": "./index.mjs",
+      "require": "./index.cjs"
+    }
+  },
+  "files": [
+    "index.mjs",
+    "index.cjs",
+    "*.mjs",
+    "*.cjs"
+  ],
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "keywords": ["print", "receipt", "template"],
+  "author": "",
+  "license": "ISC"
+}
