@@ -1,5 +1,5 @@
 {
-  "name": "@sunmi/max-print",
+  "name": "@sunmi-web/max-print",
   "version": "1.0.0",
   "type": "module",
   "description": "Max print utility package",
@@ -24,6 +24,9 @@
   "keywords": ["print", "receipt", "template"],
   "author": "",
   "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "esbuild": "^0.24.0"
   }
