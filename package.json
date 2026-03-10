@@ -3,25 +3,28 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Max print utility package",
-  "main": "index.mjs",
+  "main": "dist/index.mjs",
+  "types": "index.d.ts",
   "exports": {
     ".": {
-      "import": "./index.mjs",
-      "require": "./index.cjs"
+      "types": "./index.d.ts",
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.mjs"
     }
   },
   "files": [
-    "index.mjs",
-    "index.cjs",
-    "*.mjs",
-    "*.cjs"
+    "dist",
+    "index.d.ts"
   ],
   "scripts": {
     "build": "node build.mjs",
-    "test": "node -e \"import('./index.mjs').then(() => console.log('✓ module load ok')).catch(e => { console.error(e); process.exit(1); })\"",
+    "test": "node -e \"import('./dist/index.mjs').then(() => console.log('✓ module load ok')).catch(e => { console.error(e); process.exit(1); })\"",
     "ci": "npm run build && npm run test"
   },
   "keywords": ["print", "receipt", "template"],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "esbuild": "^0.24.0"
+  }
 }
