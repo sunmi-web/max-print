@@ -17,7 +17,9 @@
     "*.cjs"
   ],
   "scripts": {
-    "build": "node build.mjs"
+    "build": "node build.mjs",
+    "test": "node -e \"import('./index.mjs').then(() => console.log('✓ module load ok')).catch(e => { console.error(e); process.exit(1); })\"",
+    "ci": "npm run build && npm run test"
   },
   "keywords": ["print", "receipt", "template"],
   "author": "",
